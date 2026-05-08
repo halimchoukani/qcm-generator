@@ -1,2 +1,19 @@
-.venv
+# Environments
+venv/
+.venv/
+env/
+
+# Sensitive Data & Credentials
+.env
 credentials/credentials.json
+credentials/client_secret.json
+credentials/token.json
+
+# Generated Output
+output/qcm.json
+output/correction.pdf
+
+# Python Caches
+__pycache__/
+*.pyc
+*.pyo

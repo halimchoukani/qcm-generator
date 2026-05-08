@@ -1,88 +1,98 @@
-# AI Multi-Agent QCM Generator
+# 🎓 AI Multi-Agent QCM Generator (Windows Edition)
 
-## Overview
-This project generates a QCM (Questionnaire à Choix Multiples) based on a given topic, validates the questions, creates a Google Form, and generates a correction PDF.
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![Groq](https://img.shields.io/badge/LLM-Groq-orange?logo=rocket&logoColor=white)](https://groq.com/)
+[![Google Cloud](https://img.shields.io/badge/Google-Forms_API-4285F4?logo=google-cloud&logoColor=white)](https://console.cloud.google.com/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Features
-- Generate 10 pedagogically relevant questions using Google Gemini API
-- Validate questions for correctness and clarity
-- Automatically create a Google Form with the questions
-- Generate a PDF correction file
+A powerful, automated system that leverages **Multi-Agent AI** to generate high-quality Multiple Choice Questions (QCM), validate them, and deploy them directly to Google Forms.
 
-## Architecture
-- **Agents**:
-  - `generator.py`: Generates questions
-  - `validator.py`: Validates questions
-- **Services**:
-  - `gemini_client.py`: Interacts with Google Gemini API
-  - `google_forms.py`: Manages Google Forms
-  - `pdf_generator.py`: Creates correction PDFs
-- **Output**:
-  - `qcm.json`: JSON file with validated questions
-  - `correction.pdf`: PDF with questions and answers
+## ✨ Features
 
-## Prerequisites
-1. Python 3.10 or higher
-2. Install `pip` and `venv` if not already installed
-3. Google API credentials JSON file
+- 🧠 **Smart Generation**: Leverages the lightning-fast **Groq API** (Llama models) to generate pedagogically sound questions.
+- ✅ **Automated Validation**: Dedicated validator agent ensures question integrity and strictly formats AI output using Regex.
+- 📝 **Google Forms Integration**: Automatically creates and populates a Google Form with the generated questions using OAuth 2.0 User Credentials.
+- 📄 **PDF Correction Sheets**: Generates a professional PDF correction file for offline review.
+- 🎯 **Customizable Difficulty**: Supports `easy`, `medium`, and `hard` levels for any given topic.
 
-## Setup Instructions
+## 🏗️ Architecture
 
-### 1. Clone the Repository
-```bash
+The project follows a modular multi-agent and service-oriented architecture:
+
+### 🤖 Agents
+- **`QuestionGenerator`**: Interfaces with Groq to brainstorm and format questions based on the provided topic. Includes Regex parsing to handle conversational AI output gracefully.
+- **`QuestionValidator`**: Performs structural and logical validation of the generated JSON data.
+
+### 🛠️ Services
+- **`GoogleFormsService`**: Handles OAuth 2.0 authentication (via browser pop-up) and interacts with the Google Forms API v1.
+- **`PDFGenerator`**: Uses `ReportLab` to construct professional correction documents.
+- **`Config`**: Centralized management of API keys, paths, and model parameters loaded seamlessly via `.env`.
+
+## 🚀 Getting Started for Windows Users
+
+### 1️⃣ Prerequisites
+- Python **3.10** or higher installed on your Windows machine.
+- A **Groq API Key** (get one at [console.groq.com](https://console.groq.com/)).
+- A **Google Cloud Project** with the Forms API enabled.
+- An **OAuth 2.0 Client ID** (Desktop App) downloaded as `client_secret.json`.
+
+### 2️⃣ Installation
+Open your Command Prompt (`cmd`) or PowerShell and run:
+```cmd
+:: Clone the repository
 git clone <repository-url>
 cd qcm-generator
-```
 
-### 2. Create a Virtual Environment
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
+:: Setup virtual environment
+python -m venv venv
+venv\Scripts\activate
 
-### 3. Install Dependencies
-```bash
-pip install --upgrade pip
+:: Install dependencies
 pip install -r requirements.txt
 ```
 
-### 4. Configure Environment Variables
-Set the following environment variables:
-- `GEMINI_API_KEY`: Your Gemini API key
-- `GOOGLE_CREDENTIALS_PATH`: Path to your Google credentials JSON file
-
-Example:
-```bash
-export GEMINI_API_KEY="your-gemini-api-key"
-export GOOGLE_CREDENTIALS_PATH="credentials/credentials.json"
+### 3️⃣ Configuration
+Create a file named `.env` in the root folder of the project. Add the following lines to it:
+```env
+GROQ_API_KEY="your_groq_api_key_here"
+GOOGLE_CREDENTIALS_PATH="credentials/client_secret.json"
 ```
 
-### 5. Place Google Credentials
-Ensure your Google credentials JSON file is located at `credentials/credentials.json`.
+> [!IMPORTANT]
+> Ensure your downloaded Google OAuth file is placed in the `credentials/` folder and is named exactly `client_secret.json`.
 
-## Running the Application
-```bash
+## 🎮 Usage
+
+Run the main script and follow the interactive prompts:
+```cmd
 python main.py
 ```
 
-### Example Workflow
-1. Enter the topic for the QCM (e.g., "Artificial Intelligence").
-2. Enter the difficulty level (easy/medium/hard).
-3. The application will:
-   - Generate questions
-   - Validate questions
-   - Save validated questions to `output/qcm.json`
-   - Create a Google Form and display the URL
-   - Generate a correction PDF at `output/correction.pdf`
+**Workflow:**
+1. ⌨️ **Input Topic**: e.g., "Web Development"
+2. 🎚️ **Select Difficulty**: `easy`, `medium`, or `hard`
+3. 🔐 **Authentication**: On your first run, a web browser will open. Select your Google account and grant permission to manage Google Forms. This will create a `token.json` file for future use.
+4. ⚙️ **Automatic Processing**: Generation -> Validation -> Form Creation -> PDF Generation
+5. 🎉 **Output**: Get your Google Form URL and the PDF path!
 
-## Troubleshooting
-- **Missing Dependencies**: Ensure `pip install -r requirements.txt` completes successfully.
-- **Google API Errors**: Verify your credentials file and environment variable.
-- **Gemini API Errors**: Ensure your API key is valid and has sufficient quota.
+## 📂 Project Structure
 
-## Example Output
-- **Google Form URL**: A link to the generated form
-- **PDF Path**: `output/correction.pdf`
+```text
+qcm-generator/
+├── agents/             # AI logic for generation and validation
+├── services/           # External API integrations (Forms, PDF)
+├── credentials/        # Storage for Google API JSON files and auth tokens
+├── output/             # Generated JSON and PDF files
+├── config.py           # Configuration manager
+├── .env                # Environment variables (Create this file!)
+└── main.py             # Application entry point
+```
 
-## License
-This project is licensed under the MIT License.
+## 🛠️ Troubleshooting
+
+- **Access Blocked (Google Verification)**: If you get a Google warning saying the app is blocked, go to your Google Cloud Console -> **OAuth consent screen** -> **Test users** and add your `@gmail.com` address. Then click "Advanced -> Go to QCM_generator (unsafe)" when logging in.
+- **Quota Exceeded Error**: By using OAuth 2.0 (`client_secret.json`) instead of a Service Account, the script uses your personal 15GB Google Drive quota, fully resolving the infamous 0-byte Service Account creation limit.
+- **Module Not Found**: Ensure you have activated your virtual environment using `venv\Scripts\activate` before running `python main.py`.
+
+---
+Built with ❤️ by Nour Omri & Halim Choukani.

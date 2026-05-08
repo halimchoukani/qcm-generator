@@ -1,1 +1,102 @@
-[]
+[
+    {
+        "question": "What does \"VPN\" stand for?",
+        "choices": [
+            "Virtual Private Network",
+            "Variable Protocol Node",
+            "Verified Public Net",
+            "Virtual Public Network"
+        ],
+        "correct": "Virtual Private Network"
+    },
+    {
+        "question": "Which of these is a strong password practice?",
+        "choices": [
+            "Use your birthdate",
+            "Use a common word",
+            "Use a mix of letters, numbers, and symbols",
+            "Use \"password\""
+        ],
+        "correct": "Use a mix of letters, numbers, and symbols"
+    },
+    {
+        "question": "What is phishing?",
+        "choices": [
+            "A type of firewall",
+            "A method of encrypting data",
+            "A fraudulent attempt to obtain sensitive information",
+            "A network scanning tool"
+        ],
+        "correct": "A fraudulent attempt to obtain sensitive information"
+    },
+    {
+        "question": "Which of the following is an example of two-factor authentication?",
+        "choices": [
+            "Password only",
+            "Password and security question",
+            "Password and a code sent to your phone",
+            "Password and username"
+        ],
+        "correct": "Password and a code sent to your phone"
+    },
+    {
+        "question": "What does the term \"malware\" refer to?",
+        "choices": [
+            "Hardware that speeds up computers",
+            "Software designed to protect data",
+            "Software designed to damage or unauthorized access",
+            "A type of network cable"
+        ],
+        "correct": "Software designed to damage or unauthorized access"
+    },
+    {
+        "question": "Which protocol is commonly used to secure web traffic?",
+        "choices": [
+            "HTTP",
+            "FTP",
+            "HTTPS",
+            "SMTP"
+        ],
+        "correct": "HTTPS"
+    },
+    {
+        "question": "What is a firewall used for?",
+        "choices": [
+            "To store passwords",
+            "To block unauthorized network traffic",
+            "To increase internet speed",
+            "To create backup copies"
+        ],
+        "correct": "To block unauthorized network traffic"
+    },
+    {
+        "question": "Which of these is a common sign of a compromised account?",
+        "choices": [
+            "Receiving unexpected password reset emails",
+            "Seeing a new desktop wallpaper",
+            "Having more storage space",
+            "The computer runs slower"
+        ],
+        "correct": "Receiving unexpected password reset emails"
+    },
+    {
+        "question": "What does \"encryption\" do?",
+        "choices": [
+            "Deletes files permanently",
+            "Converts data into a readable format",
+            "Converts data into a coded form to prevent unauthorized access",
+            "Compresses data to save space"
+        ],
+        "correct": "Converts data into a coded form to prevent unauthorized access"
+    },
+    {
+        "question": "Which of the following is a safe practice when using public Wi\u2011Fi?",
+        "choices": [
+            "Access banking sites without a VPN",
+            "Share files with anyone on the network",
+            "Use a VPN to encrypt your connection",
+            "Turn off firewalls"
+        ],
+        "correct": "Use a VPN to encrypt your connection"
+    }
+]

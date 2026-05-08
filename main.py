@@ -6,8 +6,12 @@ from services.google_forms import GoogleFormsService
 from services.pdf_generator import PDFGenerator
 from config import Config
 import json
+from dotenv import load_dotenv
 
 def main():
+    # Load environment variables from .env file
+    load_dotenv()
+
     # Load configuration
     config = Config()
 

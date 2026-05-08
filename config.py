@@ -10,7 +10,7 @@ class Config:
 
         self.google_credentials_path = os.getenv(
             "GOOGLE_CREDENTIALS_PATH",
-            "credentials/credentials.json"
+            "credentials/client_secret.json"
         )
 
         self.output_json_path = "output/qcm.json"
@@ -18,8 +18,8 @@ class Config:
 
         self.default_difficulty = "medium"
 
-        # Gemini model
-        self.gemini_model = "gemini-2.5-flash"
+        # Groq model
+        self.groq_model = "openai/gpt-oss-120b"
 
         # Generation settings
         self.temperature = 0.7
