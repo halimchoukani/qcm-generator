@@ -2,10 +2,11 @@ import os
 
 class Config:
     def __init__(self):
-        self.gemini_api_key = os.getenv(
-            "GEMINI_API_KEY",
-            "your-gemini-api-key"
+        self.groq_api_key = os.getenv(
+            "GROQ_API_KEY",
+            "your-groq-api-key"
         )
+        # Updated to use GROQ Free API instead of Gemini
 
         self.google_credentials_path = os.getenv(
             "GOOGLE_CREDENTIALS_PATH",
