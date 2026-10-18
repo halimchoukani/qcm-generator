@@ -1,0 +1,22 @@
+name: DeployIntel Release Tracker
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify-deployintel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify DeployIntel of new release
+        run: |
+          curl -s -X POST "${{ secrets.DEPLOYINTEL_API_URL }}/api/v1/releases" \
+            -H "Authorization: Bearer ${{ secrets.DEPLOYINTEL_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+                  "projectId": "e1803463-97f2-4d51-b9ac-45f30dc2fbf5",
+                  "versionNumber": "${{ github.ref_name }}",
+                  "commitSha": "${{ github.sha }}",
+                  "branch": "${{ github.ref_name }}",
+                  "tag": "${{ github.ref_name }}",
+                  "environment": "PRODUCTION"
+                }'
