@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: Notify DeployIntel of new release
         run: |
-          curl -s -X POST "${{ secrets.DEPLOYINTEL_API_URL }}/api/v1/releases" \
-            -H "Authorization: Bearer ${{ secrets.DEPLOYINTEL_TOKEN }}" \
+          curl -s -X POST "http://localhost:8080/api/v1/releases" \
+            -H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjZGFlYzRlYS01NmU4LTQ4YWQtODYyYy02MjE5YjM3YzNlZmYiLCJlbWFpbCI6ImhhbGltLmNob3VrYW5pQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwcm9qZWN0SWQiOiJlMTgwMzQ2My05N2YyLTRkNTEtYjlhYy00NWYzMGRjMmZiZjUiLCJ0eXBlIjoiQ0lDRCIsImlhdCI6MTc5MjMyMDU3MywiZXhwIjoxODIzODU2NTczfQ.Rl_7X2ul2owzoVxPgcZc_G6h2qnuSFBaSvRrV1C6HPehmDUiaNpjSbLR7wKRpt0aR0tuUBYfWofJdkMD6XLj2g" \
             -H "Content-Type: application/json" \
             -d '{
                   "projectId": "e1803463-97f2-4d51-b9ac-45f30dc2fbf5",
